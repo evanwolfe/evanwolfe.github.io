@@ -1,0 +1,15 @@
+# Hugo build output
+/site/public/
+/site/resources/_gen/
+
+# OS junk
+.DS_Store
+
+# Node / tooling (if ever added)
+node_modules/
+
+# Editor
+.vscode/
+
+# Custom
+.env
