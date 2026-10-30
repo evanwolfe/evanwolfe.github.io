@@ -1,8 +1,9 @@
-name: Deploy Hugo site to Pages
+name: Deploy Astro site to Pages
 
 on:
   push:
     branches: ["main"]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -19,24 +20,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          submodules: true
-          fetch-depth: 0
 
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+      - name: Install, build, and upload site
+        uses: withastro/action@v3
         with:
-          hugo-version: "latest"
-          extended: true
-
-      - name: Build
-        working-directory: site
-        run: hugo --minify
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: site/public
+          node-version: 22
 
   deploy:
     environment:

@@ -1,6 +1,7 @@
 ---
 title: "A Post About the Blog (2025)"
 date: 2025-12-26
+description: "Why this blog exists, what to expect, and how it is built."
 draft: false
 ---
 # Decisions

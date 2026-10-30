@@ -1,0 +1,46 @@
+---
+import Head from '../components/Head.astro';
+import { SITE_TITLE, AUTHOR } from '../consts';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const path = Astro.url.pathname;
+const nav = [
+  { href: '/', label: 'Blog' },
+  { href: '/about/', label: 'About' },
+];
+const isCurrent = (href: string) =>
+  href === '/' ? path === '/' || path.startsWith('/posts/') : path.startsWith(href);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <Head title={title} description={description} />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="site-header">
+        <a class="site-title" href="/">{SITE_TITLE}</a>
+        <nav class="site-nav">
+          {nav.map((item) => (
+            <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </header>
+      <main>
+        <slot />
+      </main>
+      <footer class="site-footer">
+        © {new Date().getFullYear()} {AUTHOR} · All thoughts and opinions are my own ·
+        <a href="/rss.xml">RSS</a>
+      </footer>
+    </div>
+  </body>
+</html>

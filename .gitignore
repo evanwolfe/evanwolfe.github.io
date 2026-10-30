@@ -1,12 +1,12 @@
-# Hugo build output
-/site/public/
-/site/resources/_gen/
+# Build output
+dist/
+.astro/
+
+# Dependencies
+node_modules/
 
 # OS junk
 .DS_Store
-
-# Node / tooling (if ever added)
-node_modules/
 
 # Editor
 .vscode/
