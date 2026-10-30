@@ -9,7 +9,10 @@ export default defineConfig({
   integrations: [
     // Expressive Code must come before MDX
     expressiveCode({
-      themes: ['github-dark', 'github-light'],
+      // Light by default; dark only applies if <html data-theme="dark"> is set
+      themes: ['github-light', 'github-dark'],
+      useDarkModeMediaQuery: false,
+      themeCssSelector: (theme) => `[data-theme='${theme.type}']`,
       plugins: [pluginLineNumbers()],
       defaultProps: { showLineNumbers: false },
       styleOverrides: {

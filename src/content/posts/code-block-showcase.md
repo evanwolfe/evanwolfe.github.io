@@ -5,7 +5,7 @@ description: "A draft post demonstrating code block features. Delete it, or set 
 draft: true
 ---
 
-Inline code like `aws s3 ls` gets a subtle background. Blocks get syntax highlighting that follows your light or dark mode.
+Inline code like `aws s3 ls` gets a subtle background. Blocks get syntax highlighting.
 
 ## A titled file
 

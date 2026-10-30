@@ -13,6 +13,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <meta charset="utf-8" />
+<script is:inline>
+  // Apply a saved dark-mode choice before first paint to avoid a flash of light
+  try {
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.dataset.theme = 'dark';
+    }
+  } catch (e) {}
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{fullTitle}</title>
 <meta name="description" content={description} />

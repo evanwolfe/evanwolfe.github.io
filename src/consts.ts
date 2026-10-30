@@ -1,4 +1,3 @@
-export const SITE_TITLE = 'Cloud Security Field Notes';
-export const SITE_DESCRIPTION =
-  'Field notes, guides, and write-ups on cloud security, by Evan Wolfe.';
+export const SITE_TITLE = 'evanwolfe';
+export const SITE_DESCRIPTION = 'Projects, short guides, and career notes from Evan Wolfe, who leads cloud security.';
 export const AUTHOR = 'Evan Wolfe';

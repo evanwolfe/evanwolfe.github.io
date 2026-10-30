@@ -21,18 +21,18 @@
   --code-bg: #f1f3f4;
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
-  color-scheme: light dark;
+  color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #15171a;
-    --fg: #e8eaed;
-    --muted: #8a9ba3;
-    --border: #2a2e33;
-    --accent: #7c9cff;
-    --code-bg: #23272b;
-  }
+/* Dark is opt-in: set by the header toggle, never by the OS setting */
+:root[data-theme='dark'] {
+  --bg: #15171a;
+  --fg: #e8eaed;
+  --muted: #8a9ba3;
+  --border: #2a2e33;
+  --accent: #7c9cff;
+  --code-bg: #23272b;
+  color-scheme: dark;
 }
 
 *,
@@ -91,8 +91,42 @@ a:hover {
 
 .site-nav {
   display: flex;
+  align-items: center;
   gap: 1.5rem;
   font-size: 0.9rem;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  color: var(--fg);
+}
+
+.theme-toggle svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Show the icon for the mode you'd switch to */
+.theme-toggle .icon-sun,
+:root[data-theme='dark'] .theme-toggle .icon-moon {
+  display: none;
+}
+
+:root[data-theme='dark'] .theme-toggle .icon-sun {
+  display: block;
 }
 
 .site-nav a {
@@ -229,6 +263,30 @@ a:hover {
   padding: 0.5rem 0.75rem;
   border-bottom: 1px solid var(--border);
   text-align: left;
+}
+
+/* Social links */
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 2rem;
+}
+
+.links a {
+  padding: 0.3rem 0.95rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--fg);
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.links a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  text-decoration: none;
 }
 
 /* Code blocks: breathing room around Expressive Code frames */
